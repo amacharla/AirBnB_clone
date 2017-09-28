@@ -1,6 +1,6 @@
 # <img src="https://www.holbertonschool.com/assets/holberton-logo-simplified-71b02868461c07d54553e4a7cc05d1926681a6755cc19030b0458f2d70ae9909.png" width="30"> 0x00. AirBnB clone - The console
 
-**Authors: [Anoop Macharla](https://www.linkedin.com/in/amacharla/) and [Thomas Wang](https://www.linkedin.com/in/thomaspwang/)
+**Authors: [Anoop Macharla](https://www.linkedin.com/in/amacharla/) and [Thomas Wang](https://www.linkedin.com/in/thomaspwang/)**
 
 <img src ="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/263/HBTN-hbnb-Final.png">
 
