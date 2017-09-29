@@ -6,11 +6,28 @@ from datetime import datetime
 class BaseModel():
     """ Base Class """
 
-    def __init__(self):
-        """ Base Initilazation """
+    def __init__(self, *args, **kwargs):
+        """ Base Initilazation
+        Args:
+            args: not used often, dont know why its here
+            kwargs: dict type argument
+        Raises:
+            Exception: helps prevent failure if user passes in invalid argument
+        """
+
         self.id = str(uuid.uuid4())  # random uniq id in str format
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+        for key, value in kwargs.items():  # update attr with kwargs attr
+            if key == "__class__":  # ignore __class__ attr
+                continue
+            try:  # if user passes in invald value
+                if key == "created_at" or key == "updated_at":  # isoformat -> object
+                    setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                else:
+                    setattr(self, key, value)
+            except Exception:
+                pass
 
     def __str__(self):
         """ String rep: [<class name>] (<self.id>) <self.__dict__> """
@@ -22,7 +39,7 @@ class BaseModel():
 
     def to_dict(self):
         """ Returns: a dict with all keys/values of __dict__ of instance """
-        json_dict = copy.deepcopy(self.__dict__)  # so og dict cant be modified
+        json_dict = copy.deepcopy(self.__dict__)  # so og dict can't be modified
         json_dict.update({'__class__': self.__class__.__name__,
                           'updated_at': self.updated_at.isoformat(),
                           'created_at': self.created_at.isoformat()})
