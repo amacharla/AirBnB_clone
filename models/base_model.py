@@ -4,6 +4,7 @@ import copy, uuid
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     """ Base Class """
 
