@@ -12,25 +12,25 @@ class FileStorage:
     """
 
     __file_path = "file.json"
-    __objects = {}
+    __objects = {}  # holds all the instances
 
     def all(self):
-        """ Returns: dict of `__objects` """
+        """ Returns: dict of `__objects` which hold instances"""
 
-        return __objects
+        return self.__objects
 
     def new(self, obj):
-        """ set in `__objects` to the JSON file """
+        """ add instance to `__objects` dict  """
 
-        key = "{0.__class__.__name__}.{0.id}".format(obj)
-        self.__objects[key] = obj.to_dict()  # get dict rep of obj
-        # key changes if different instance thus __objects can hold multiple instances
+        key = "{0.__class__.__name__}.{0.id}".format(obj)  # id uniq/instance
+        # value = Instances dict <- JSON str <- converted to <- Objects dict
+        self.__objects[key] = obj.to_dict()  # holds multiple instances
 
     def save(self):
         """ serializes `__objects` to the JSON file """
 
-        try:  # if file doesnt exist
-            with open(__file_path, 'w') as json_file:
+        try:  # if file doesnt exist dont do anything
+            with open(self.__file_path, 'w') as json_file:
                 json.dump(self.__objects, json_file)
         except:
             pass
@@ -38,10 +38,12 @@ class FileStorage:
     def reload(self):
         """ deserializes the JSON file to __objects """
 
-        try:
-            with open(__file_path, 'r') as json_file:
+        try:  # if file doesnt exist dont do anything
+            with open(self.__file_path, 'r') as json_file:
                 instances = json.load(json_file)
         except:
             pass
-        for instance, attributes in instances.items():
-            eval(instance(**attributes))
+        else:  # if exist recreate instance
+            for instance, attributes in instances.items():
+                self.__objects[instance] = eval(attributes['__class__'])(**attributes)
+                                              # ex. value = BaseModel(**kwargs)
