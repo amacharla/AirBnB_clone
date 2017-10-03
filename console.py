@@ -48,6 +48,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 print(instance.id)
+                storage.save()
         return
 
     def do_show(self, args):
@@ -72,8 +73,9 @@ class HBNBCommand(cmd.Cmd):
             return
 
         inst = cls_name + '.' + cls_id
-        if inst in self.__instances:  # check if instance exist
-            print(self.__instances[inst])  # get obj
+        instances = storage.all()
+        if inst in instances:  # check if instance exist
+            print(instances[inst])  # get obj
         else:
             print("** no instance found **")
         return
@@ -100,8 +102,9 @@ class HBNBCommand(cmd.Cmd):
             return
 
         inst = cls_name + '.' + cls_id
-        if inst in self.__instances:  # check if instance exist
-            del self.__instances[inst]  # delete obj
+        instances = storage.all()
+        if inst in instances:  # check if instance exist
+            del instances[inst]  # delete obj
             storage.save()  # save changes into JSON file
         else:
             print("** no instance found **")
@@ -118,14 +121,67 @@ class HBNBCommand(cmd.Cmd):
         result = ['[']
         trigger = 0 if cls_name else 1
 
+        if not trigger:
+            try:  # check if class exist
+                _ = eval(cls_name)()
+            except:
+                print("** class doesn't exist **")
+                return
+
         for obj in storage.all().values():
             if trigger or obj.__class__.__name__ == cls_name:
                 result.append(str(obj) + '\n')
 
         result = "".join(result)
+        if len(result) == 1:
+            result += ']'
+
         print(result[:-1] + ']')
 
+    def do_update(self, args):
+        """
+         Updates an instance based on the class name and id by adding or updating attribute
+
+         Usage: update <class name> <id> <attribute name> "<attribute value>"
+         """
+
+        if not args:  # testing arguments are passed
+            print("** class name missing **")
+            return
+
+        args = args.split()
+
+        try:  # testing `class` argument
+            _ = eval(args[0])()
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        if not args[1]:  # testing `id` argument
+            print("** instance id missing **")
+        else:
+            inst = args[0] + '.' + args[1]  # `class.id`
+            instances = storage.all()
+            if inst in instances:  # get obj
+                obj = instances[inst]
+            else:
+                print("** no instance found **")
+                return
+        if not args[2]:  # testing `attribute` argument
+            print("** attribute name missing **")
+            return
+        elif args[2] in "id, created_at, updated_at":  # shouldnt modify
+            return
+        else:
+            if not args[3]:  # testing `value` argument
+                print("** value missing **")
+                return
+
+        setattr(obj, args[2], args[3])  # update instance
+        storage.save()
+        return
+
 # ==================== AUTO-COMPLETION  ====================
+
 
     def complete_create(self, text):
         """ Auto-complete for `create` """
@@ -180,6 +236,17 @@ class HBNBCommand(cmd.Cmd):
                             if letters.startswith(text)
                           ]
         return completions
+
+    def complete_update(self, text, line):
+        """ Auto-complete for `update` """
+
+        instances_key = list(self.__instances.keys())  # instances list format
+        # turn `class.id` -> `class id`
+        instances = list(set((name.replace('.',' ') for name in instances_key)))
+
+        mline = line.partition(' ')[2]
+        offs = len(mline) - len(text)
+        return [s[offs:] for s in instances if s.startswith(mline)]
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
