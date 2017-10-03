@@ -40,7 +40,7 @@ class BaseModel:
     def save(self):
         """ updates public instance attribute `updated_at` """
         self.updated_at = datetime.now()
-        storage.save()
+        storage.save()  # save all the instances in scope
 
     def to_dict(self):
         """ Returns: a dict with all keys/values of __dict__ of instance """
