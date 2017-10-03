@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """ Module with BaseModel class """
-import copy, uuid
+import copy, uuid, models
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
@@ -31,7 +30,7 @@ class BaseModel:
             except Exception:
                 pass
         if "id" not in kwargs:  # know that its a new instance
-            storage.new(self)  # send the new instance to `__object` dict
+            models.storage.new(self)  # send the new instance to `__object` dict
 
     def __str__(self):
         """ String rep: [<class name>] (<id>) <__dict__> """
@@ -40,7 +39,7 @@ class BaseModel:
     def save(self):
         """ updates public instance attribute `updated_at` """
         self.updated_at = datetime.now()
-        storage.save()  # save all the instances in scope
+        models.storage.save()  # save all the instances in scope
 
     def to_dict(self):
         """ Returns: a dict with all keys/values of __dict__ of instance """

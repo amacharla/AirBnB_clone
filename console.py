@@ -14,9 +14,10 @@ class HBNBCommand(cmd.Cmd):
 
 # ==================== setup ====================
 
-    intro = "=====Holberton AirBnB Console 0.0.1====="
+    intro =  "=====Holberton AirBnB Console 0.0.1====="
+    intro += "======= by, Anoop M. & Tommy W ========="
     prompt = "(hbhb) "
-    __instances = storage.all()
+    __instances = storage.all()  # used for auto-completion
 
     def do_quit(self, line):
         """ Exits the HBNB Console """
@@ -49,6 +50,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print(instance.id)
                 storage.save()
+                self.__instances = storage.all()  # update inst for autocomplete
         return
 
     def do_show(self, args):
@@ -106,6 +108,7 @@ class HBNBCommand(cmd.Cmd):
         if inst in instances:  # check if instance exist
             del instances[inst]  # delete obj
             storage.save()  # save changes into JSON file
+            self.__instances = storage.all()  # update inst for autocomplete
         else:
             print("** no instance found **")
 
@@ -119,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         """
 
         result = ['[']
-        trigger = 0 if cls_name else 1
+        trigger = 0 if cls_name else 1  # if optional argument was passed
 
         if not trigger:
             try:  # check if class exist
@@ -133,10 +136,10 @@ class HBNBCommand(cmd.Cmd):
                 result.append(str(obj) + '\n')
 
         result = "".join(result)
-        if len(result) == 1:
+        if len(result) == 1:  # if no instances exist, send empty '[]'
             result += ']'
 
-        print(result[:-1] + ']')
+        print(result[:-1] + ']')  # last '\n' will be overwritten with ']'
 
     def do_update(self, args):
         """
@@ -183,13 +186,13 @@ class HBNBCommand(cmd.Cmd):
 # ==================== AUTO-COMPLETION  ====================
 
 
-    def complete_create(self, text):
+    def complete_create(self, text, line, begidx, endidx):
         """ Auto-complete for `create` """
 
-        instances = list(self.__instances.keys())  # list of instances
+        instances_key = list(self.__instances.keys())  # list of instances
         # get only the class name and strip the id away in `class.id`
-        # all options for class names
-        cls_names = list(set((name.split('.')[0] for name in instances)))
+        # all unique options for class names
+        cls_names = list(set((name.split('.')[0] for name in instances_key)))
         if not text:  # when usr press tab wihtout txt.
             completions = cls_names[:]  # show all options
         else:  # auto complete usr press tab
@@ -199,35 +202,35 @@ class HBNBCommand(cmd.Cmd):
                           ]
         return completions
 
-    def complete_show(self, text, line):
+    def complete_show(self, text, line, begidx, endidx):
         """ Auto-complete for `show` """
 
         instances_key = list(self.__instances.keys())  # instances list format
-        # turn `class.id` -> `class id`
+        # turn `class.id` -> `class id`; only show unique class names
         instances = list(set((name.replace('.',' ') for name in instances_key)))
 
         mline = line.partition(' ')[2]
         offs = len(mline) - len(text)
         return [s[offs:] for s in instances if s.startswith(mline)]
 
-    def complete_destroy(self, text, line):
+    def complete_destroy(self, text, line, begidx, endidx):
         """ Auto-complete for `destroy` """
 
         instances_key = list(self.__instances.keys())  # instances list format
-        # turn `class.id` -> `class id`
+        # turn `class.id` -> `class id`; only show unique class names
         instances = list(set((name.replace('.',' ') for name in instances_key)))
 
         mline = line.partition(' ')[2]
         offs = len(mline) - len(text)
         return [s[offs:] for s in instances if s.startswith(mline)]
 
-    def complete_all(self, text):
+    def complete_all(self, text, line, begidx, endidx):
         """ Auto-complete for `create` """
 
-        instances = list(self.__instances.keys())  # list of instances
+        instances_key = list(self.__instances.keys())  # list of instances
         # get only the class name and strip the id away in `class.id`
-        # all options for class names
-        cls_names = list(set((name.split('.')[0] for name in instances)))
+        # all unique options for class names
+        cls_names = list(set((name.split('.')[0] for name in instances_key)))
         if not text:  # when usr press tab wihtout txt.
             completions = cls_names[:]  # show all options
         else:  # auto complete usr press tab
@@ -237,13 +240,14 @@ class HBNBCommand(cmd.Cmd):
                           ]
         return completions
 
-    def complete_update(self, text, line):
+    def complete_update(self, text, line, begidx, endidx):
         """ Auto-complete for `update` """
 
         instances_key = list(self.__instances.keys())  # instances list format
-        # turn `class.id` -> `class id`
+        # turn `class.id` -> `class id`; only show unique class names
         instances = list(set((name.replace('.',' ') for name in instances_key)))
 
+        # taken from Stack Overflow
         mline = line.partition(' ')[2]
         offs = len(mline) - len(text)
         return [s[offs:] for s in instances if s.startswith(mline)]

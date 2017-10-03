@@ -3,7 +3,7 @@
     that searializes instance to JSON file and
     deserializes JSON file to instances
 """
-import json, copy
+import json, copy, models
 class FileStorage:
     """
     - Searializes Instance to JSON file
