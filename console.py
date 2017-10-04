@@ -4,7 +4,7 @@ Entry point of the command interpreter
 AirBnB Version 1
 """
 import cmd
-from models import storage
+from models import storage, obj_constructor
 from models.base_model import BaseModel
 from models.user import User
 
@@ -15,8 +15,8 @@ class HBNBCommand(cmd.Cmd):
 
 # ==================== setup ====================
 
-    intro =  "=====Holberton AirBnB Console 0.0.1====="
-    intro += "======= by, Anoop M. & Tommy W ========="
+    intro =  "=====Holberton AirBnB Console 0.0.1=====\n"
+    intro += "======= by, Anoop M. & Tommy W =========\n"
     prompt = "(hbhb) "
     __instances = storage.all()  # used for auto-completion
 
@@ -46,12 +46,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             try:  # test if class exist
-                instance = eval(cls_name)()
+                instance = obj_constructor(cls_name, 1)
             except NameError:
                 print("** class doesn't exist **")
             else:
                 print(instance.id)
-                instance.save()  # redundant because when you create new instance it sets time and saves
+                instance.save()  # save instance to JSON file
                 self.__instances = storage.all()  # update inst for autocomplete
         return
 
@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
 
         try:  # testing arguments
             cls_name, cls_id = args.split(' ')
-            _ = eval(cls_name)()
+            obj_constructor(cls_name)
         except ValueError:  # test for second argument
             print("** instance id missing **")
             return
@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
 
         try:  # testing arguments
             cls_name, cls_id = args.split(' ')
-            _ = eval(cls_name)()
+            obj_constructor(cls_name)
         except ValueError:  # test for second argument
             print("** instance id missing **")
             return
@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
 
         if not trigger:
             try:  # check if class exist
-                _ = eval(cls_name)()
+                obj_constructor(cls_name)
             except:
                 print("** class doesn't exist **")
                 return
@@ -155,13 +155,18 @@ class HBNBCommand(cmd.Cmd):
 
         args = args.split()
 
-        try:  # testing `class` argument
-            _ = eval(args[0])()
-        except NameError:
-            print("** class doesn't exist **")
-            return
-        if not args[1]:  # testing `id` argument
+        if len(args) >= 1:
+            try:  # testing `class` argument
+                obj_constructor(args[0])
+            except NameError as error:
+                print("** class doesn't exist **")
+                return
+        else:
+            print("** class name missing **")
+
+        if len(args) < 2:  # testing `id` argument
             print("** instance id missing **")
+            return
         else:
             inst = args[0] + '.' + args[1]  # `class.id`
             instances = storage.all()
@@ -170,15 +175,18 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
                 return
-        if not args[2]:  # testing `attribute` argument
+
+        if len(args) < 3:  # testing `attribute` argument
             print("** attribute name missing **")
             return
         elif args[2] in "id, created_at, updated_at":  # shouldnt modify
             return
         else:
-            if not args[3]:  # testing `value` argument
+            if len(args) < 4:  # testing `value` argument
                 print("** value missing **")
                 return
+            else:  # strip the quotes
+                args[3] = args[3].strip('\"')
 
         setattr(obj, args[2], args[3])  # update instance
         storage.save()
