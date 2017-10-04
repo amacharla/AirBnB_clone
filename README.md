@@ -16,7 +16,7 @@ This first step is very important because we will use what you build during this
 - create the first abstracted storage engine of the project: File storage. 
 - create all unittests to validate all our classes and storage engine</p>
 
-<h2>What&#39;s a command interpreter?</h2>
+<h3>What&#39;s a command interpreter?</h3>
 
 <p>It&#39;s like a shell command interpreter the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:</p>
 
@@ -81,7 +81,7 @@ $
 
 <p><img src="https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step0.png" alt="step0"></p>
 
-### Project Breakdown
+## Project Breakdown
 
 #### 0. README, AUTHORS
 
