@@ -6,6 +6,7 @@ AirBnB Version 1
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 
 
@@ -104,9 +105,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
         inst = cls_name + '.' + cls_id
-        instances = storage.all()
-        if inst in instances:  # check if instance exist
-            del instances[inst]  # delete obj
+        if inst in storage.all():  # check if instance exist
+            del storage.all()[inst]  # delete obj
             storage.save()  # save changes into JSON file
             self.__instances = storage.all()  # update inst for autocomplete
         else:

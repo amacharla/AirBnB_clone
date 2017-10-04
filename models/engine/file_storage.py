@@ -30,12 +30,12 @@ class FileStorage:
 
         try:  # if file doesnt exist dont do anything
             with open(self.__file_path, 'w') as json_file:
-                for key, value in self.__objects.items():
+                for key, obj in self.__objects.items():
                     # serialize obj by calling `to_dict()`
-                    self.__objects[key] = value.to_dict()
+                    self.__objects[key] = obj.to_dict()  # saving to same dict
                 # save dict of instances (`class.id = inst.__dict__`) to file
                 json.dump(self.__objects, json_file)
-        except:
+        except FileNotFoundError:
             pass
 
     def reload(self):
@@ -54,7 +54,20 @@ class FileStorage:
         """ Turns inner dict into object and doesnt modify outter dict """
         # imported here to prevent cicular import
         from models.base_model import BaseModel
+        from models.user import User
         # if dict is inner dict then convert to object
-        if '__class__' in obj_dict and obj_dict['__class__'] == 'BaseModel':
-            return BaseModel(**obj_dict)  # returns objects memory address
-        return obj_dict  # if outter dict (`class.id`) leave as is
+        if '__class__' in obj_dict:  # returns objects memory address
+            if obj_dict['__class__'] == "BaseModel":
+                return BaseModel(**obj_dict)
+            if obj_dict['__class__'] == "User":
+                return User(**obj_dict)
+            if obj_dict['__class__'] == "City":
+                return City(**obj_dict)
+            if obj_dict['__class__'] == "Amenity":
+                return Amenity(**obj_dict)
+            if obj_dict['__class__'] == "Place":
+                return Place(**obj_dict)
+            if obj_dict['__class__'] == "Review":
+                return Review(**obj_dict)
+        else:
+            return obj_dict  # if outter dict (`class.id`) leave as is
