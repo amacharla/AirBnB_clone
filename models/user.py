@@ -2,6 +2,7 @@
 """ Module with `user` class that inherates from BaseModel """
 from models import BaseModel
 
+
 class User(BaseModel):
     """ User subclass """
 
@@ -10,6 +11,6 @@ class User(BaseModel):
 
         usr_attr = ["email", "password", "first_name", "last_name"]
         [setattr(self, key, kwargs.pop(key, ""))
-                for key in usr_attr]
+         for key in usr_attr]
 
         super().__init__(*args, **kwargs)

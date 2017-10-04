@@ -2,6 +2,7 @@
 """ Module with State subclasee """
 from models import BaseModel
 
+
 class Amenity(BaseModel):
     """ Amenity subclass """
 

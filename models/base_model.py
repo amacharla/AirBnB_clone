@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ Module with BaseModel class """
-import copy, uuid, models
+import copy
+import uuid
+import models
 from datetime import datetime
 
 
@@ -23,14 +25,16 @@ class BaseModel:
             if key == "__class__":  # ignore __class__ attr
                 continue
             try:  # if user passes in invald value for time, uses current time
-                if key == "created_at" or key == "updated_at":  # isoformat -> object
-                    setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                if key == "created_at" or key == "updated_at":  # isoformat
+                    setattr(self,
+                            key,
+                            datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
                 else:
                     setattr(self, key, value)
             except Exception:
                 pass
         if "id" not in kwargs:  # know that its a new instance
-            models.storage.new(self)  # send the new instance to `__object` dict
+            models.storage.new(self)  # send the new instance to __object dict
 
     def __str__(self):
         """ String rep: [<class name>] (<id>) <__dict__> """
@@ -43,9 +47,9 @@ class BaseModel:
 
     def to_dict(self):
         """ Returns: a dict with all keys/values of __dict__ of instance """
-        json_dict = copy.deepcopy(self.__dict__)  # so og dict can't be modified
+        json_dict = copy.deepcopy(self.__dict__)  # so og dict can't modify
         #  `__class__` later used to recreate instance
         json_dict.update({'__class__': self.__class__.__name__,
                           'updated_at': self.updated_at.isoformat(),
                           'created_at': self.created_at.isoformat()})
-        return json_dict  # dict in JSON str format & used save attr of instance
+        return json_dict  # dict in JSON str format & used save attr

@@ -3,7 +3,11 @@
     that searializes instance to JSON file and
     deserializes JSON file to instances
 """
-import json, copy, models  # remove models
+import json
+import copy
+import models  # remove models
+
+
 class FileStorage:
     """
     - Searializes Instance to JSON file
@@ -47,7 +51,8 @@ class FileStorage:
             with open(self.__file_path, 'r') as json_file:
                 # json.load process inner dict then outter dict
                 # `__object` <- `class.id: object` memory address
-                self.__objects = json.load(json_file, object_hook=self.object_decoder)
+                self.__objects = json.load(json_file
+                                           object_hook=self.object_decoder)
         except:  # file doesnt exist
             pass
 

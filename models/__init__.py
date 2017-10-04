@@ -10,6 +10,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 def obj_constructor(cls_name, create=0):
     """ Object Contructor, alternative for eval """
 

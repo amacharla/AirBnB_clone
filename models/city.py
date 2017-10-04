@@ -2,6 +2,7 @@
 """ Module with City subclasee """
 from models import BaseModel
 
+
 class City(BaseModel):
     """ City subclass """
 
