@@ -331,27 +331,6 @@ $
 
 <p>Update your command interpreter (<code>console.py</code>) to allow <code>show</code>, <code>create</code>, <code>destroy</code>, <code>update</code> and <code>all</code> used with <code>User</code>.</p>
 
-<pre><code>guillaume@ubuntu:~/AirBnB$ cat test_save_reload_user.py
-#!/usr/bin/python3
-from models import storage
-from models.base_model import BaseModel
-from models.user import User
-
-all_objs = storage.all()
-print(&quot;-- Reloaded objects --&quot;)
-for obj_id in all_objs.keys():
-    obj = all_objs[obj_id]
-    print(obj)
-
-print(&quot;-- Create a new User --&quot;)
-my_user = User()
-my_user.first_name = &quot;Betty&quot;
-my_user.last_name = &quot;Holberton&quot;
-my_user.email = &quot;airbnb@holbertonshool.com&quot;
-my_user.password = &quot;root&quot;
-my_user.save()
-print(my_user)
-
 #### 9. More classes!
 
 <p>Write all those classes that inherit from <code>BaseModel</code>:</p>
