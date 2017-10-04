@@ -7,8 +7,11 @@ import cmd
 from models import storage, obj_constructor
 from models.base_model import BaseModel
 from models.user import User
-
-
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """ Command Line Class """
@@ -189,7 +192,7 @@ class HBNBCommand(cmd.Cmd):
                 args[3] = args[3].strip('\"')
 
         setattr(obj, args[2], args[3])  # update instance
-        storage.save()
+        obj.save()  # save updated obj
         return
 
 # ==================== AUTO-COMPLETION  ====================
@@ -218,6 +221,7 @@ class HBNBCommand(cmd.Cmd):
         # turn `class.id` -> `class id`; only show unique class names
         instances = list(set((name.replace('.',' ') for name in instances_key)))
 
+        # taken from Stack Overflow
         mline = line.partition(' ')[2]
         offs = len(mline) - len(text)
         return [s[offs:] for s in instances if s.startswith(mline)]
@@ -229,6 +233,7 @@ class HBNBCommand(cmd.Cmd):
         # turn `class.id` -> `class id`; only show unique class names
         instances = list(set((name.replace('.',' ') for name in instances_key)))
 
+        # taken from Stack Overflow
         mline = line.partition(' ')[2]
         offs = len(mline) - len(text)
         return [s[offs:] for s in instances if s.startswith(mline)]

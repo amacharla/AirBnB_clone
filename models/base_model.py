@@ -22,7 +22,7 @@ class BaseModel:
         for key, value in kwargs.items():  # update attr with kwargs attr
             if key == "__class__":  # ignore __class__ attr
                 continue
-            try:  # if user passes in invald value
+            try:  # if user passes in invald value for time, uses current time
                 if key == "created_at" or key == "updated_at":  # isoformat -> object
                     setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
                 else:

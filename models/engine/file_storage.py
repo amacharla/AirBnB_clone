@@ -3,7 +3,7 @@
     that searializes instance to JSON file and
     deserializes JSON file to instances
 """
-import json, copy, models
+import json, copy, models  # remove models
 class FileStorage:
     """
     - Searializes Instance to JSON file
@@ -57,12 +57,19 @@ class FileStorage:
         # imported here to prevent cicular import
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
         # if dict is inner dict then convert to object
         if '__class__' in obj_dict:  # returns objects memory address
             if obj_dict['__class__'] == "BaseModel":
                 return BaseModel(**obj_dict)
             if obj_dict['__class__'] == "User":
                 return User(**obj_dict)
+            if obj_dict['__class__'] == "State":
+                return State(**obj_dict)
             if obj_dict['__class__'] == "City":
                 return City(**obj_dict)
             if obj_dict['__class__'] == "Amenity":
