@@ -81,3 +81,9 @@ class TestBaseModel(unittest.TestCase):
         bm2 = BaseModel()
         self.assertNotEqual(bm1.created_at, bm2.created_at)
         self.assertNotEqual(bm1.updated_at, bm2.updated_at)
+
+    def test_instantiation_id(self):
+        """Test that an ID is present BaseModel instance after instantiating"""
+        self.instance = BaseModel()
+        self.assertIsInstance(self.instance, BaseModel)
+        self.assertTrue(hasattr(self.instance, "id"))
