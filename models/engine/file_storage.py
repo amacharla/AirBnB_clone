@@ -28,14 +28,16 @@ class FileStorage:
     def save(self):
         """ serializes `__objects` to the JSON file """
 
+        json_dict = {}
         try:  # if file doesnt exist dont do anything
             with open(self.__file_path, 'w') as json_file:
                 for key, obj in self.__objects.items():
                     # serialize obj by calling `to_dict()`
-                    self.__objects[key] = obj.to_dict()  # saving to same dict
+                    json_dict[key] = obj.to_dict()
                 # save dict of instances (`class.id = inst.__dict__`) to file
-                json.dump(self.__objects, json_file)
+                json.dump(json_dict, json_file)
         except FileNotFoundError:
+            del json_dict
             pass
 
     def reload(self):
@@ -45,12 +47,12 @@ class FileStorage:
             with open(self.__file_path, 'r') as json_file:
                 # json.load process inner dict then outter dict
                 # `__object` <- `class.id: object` memory address
-                self.__objects = json.load(json_file, object_hook=self._object_decoder)
+                self.__objects = json.load(json_file, object_hook=self.object_decoder)
         except:  # file doesnt exist
             pass
 
     @staticmethod
-    def _object_decoder(obj_dict):
+    def object_decoder(obj_dict):
         """ Turns inner dict into object and doesnt modify outter dict """
         # imported here to prevent cicular import
         from models.base_model import BaseModel

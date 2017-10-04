@@ -32,6 +32,7 @@ class HBNBCommand(cmd.Cmd):
         """ Ignores empty line """
         pass
 
+
 # ==================== Commands ====================
 
     def do_create(self, cls_name):
@@ -50,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 print(instance.id)
-                storage.save()
+                instance.save()  # redundant because when you create new instance it sets time and saves
                 self.__instances = storage.all()  # update inst for autocomplete
         return
 
