@@ -2,16 +2,12 @@
 
 **Authors: [Anoop Macharla](https://www.linkedin.com/in/amacharla/) and [Thomas Wang](https://www.linkedin.com/in/thomaspwang/)**
 
-<img src ="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/263/HBTN-hbnb-Final.png">
+<img src ="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/263/HBTN-hbnb-Final.png" width='500'>
 
-<h2>Welcome to the AirBnB clone project! (The Holberton B&amp;B)</h2>
+## Getting Started
 
-<p>Before starting, please read the <a href="https://intranet.hbtn.io/concepts/74">AirBnB concept page</a></p>
-
-<p>First step: Write a command interpreter to manage your AirBnB objects.</p>
-
-<p>This is the first step towards building your first full web application: the <strong>AirBnB clone</strong>.
-This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration... </p>
+<p>This is the first step towards building our first full web application: the <strong>AirBnB clone</strong>.
+This first step is very important because we will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration... </p>
 
 <p>Each tasks are linked and will help you to:
 - put in place a parent class (called <code>BaseModel</code>) to take care of the initialization, serialization and deserialization of your future instances
@@ -22,7 +18,7 @@ This first step is very important because you will use what you build during thi
 
 <h2>What&#39;s a command interpreter?</h2>
 
-<p>Do you remember the Shell? It&#39;s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:</p>
+<p>It&#39;s like a shell command interpreter the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:</p>
 
 <ul>
 <li>Create a new object (ex: a new User or a new Place)</li>
@@ -32,18 +28,7 @@ This first step is very important because you will use what you build during thi
 <li>Destroy an object</li>
 </ul>
 
-## Table of Contents
-
-* [Resources](#resources)
-* [What students should learn from this project](#what-students-should-learn-from-this-project)
-* [Requirements](#requirements)
-* [Execution](#execution)
-* [Project Breakdown](#project-breakdown)
-
-## Resources
-
-<p>Read:</p>
-
+### Prerequisites
 <ul>
 <li><a href="https://docs.python.org/3.4/library/cmd.html">cmd module</a></li>
 <li><a href="https://intranet.hbtn.io/concepts/66">packages</a></li>
@@ -54,62 +39,7 @@ This first step is very important because you will use what you build during thi
 <li><a href="https://www.pythonsheets.com/notes/python-tests.html">Python test cheatsheet</a></li>
 </ul>
 
-## What students should learn from this project
-
-<p>At the end of this project you are expected to be able to explain to anyone, without the help of Google:</p>
-
-<ul>
-<li>How to create a Python package</li>
-<li>How to create a command interpreter in Python using the <code>cmd</code> module</li>
-<li>What is Unit testing and how to implement it in a large project</li>
-<li>How to serialize and deserialize a Class</li>
-<li>How to write and read a JSON file</li>
-<li>How to manage <code>datetime</code></li>
-<li>What is an <code>UUID</code></li>
-<li>What is <code>*args</code> and how to use it</li>
-<li>What is <code>**kwargs</code> and how to use it</li>
-<li>How to handle named arguments in a function</li>
-</ul>
-
-## Requirements
-
-<h3>Requirements for Python scripts</h3>
-
-<ul>
-<li>Allowed editors: <code>vi</code>, <code>vim</code>, <code>emacs</code></li>
-<li>All your files will be interpreted/compiled on Ubuntu 14.04 LTS using <code>python3</code> (version 3.4.3)</li>
-<li>All your files should end with a new line</li>
-<li>The first line of all your files should be exactly <code>#!/usr/bin/python3</code></li>
-<li>A <code>README.md</code> file, at the root of the folder of the project, is mandatory</li>
-<li>Your code should use the <code>PEP 8</code> style (version 1.7.*)</li>
-<li>All your files must be executable</li>
-<li>The length of your files will be tested using <code>wc</code></li>
-<li>All your modules should have a documentation (<code>python3 -c &#39;print(__import__(&quot;my_module&quot;).__doc__)&#39;</code>)</li>
-<li>All your classes should have a documentation (<code>python3 -c &#39;print(__import__(&quot;my_module&quot;).MyClass.__doc__)&#39;</code>)</li>
-<li>All your functions (inside and outside a class) should have a documentation (<code>python3 -c &#39;print(__import__(&quot;my_module&quot;).my_function.__doc__)&#39;</code> and <code>python3 -c &#39;print(__import__(&quot;my_module&quot;).MyClass.my_function.__doc__)&#39;</code>)</li>
-</ul>
-
-<h3>Requirements for Python unit tests</h3>
-
-<p>For this project, you will create <strong>unit tests</strong>, not doctest:</p>
-
-<ul>
-<li>Allowed editors: <code>vi</code>, <code>vim</code>, <code>emacs</code></li>
-<li>All your files should end with a new line</li>
-<li>All your test files should be inside a folder <code>tests</code></li>
-<li>You have to use the <a href="https://docs.python.org/3.4/library/unittest.html#module-unittest">unittest module</a> </li>
-<li>All your test files should be python files (extension: <code>.py</code>)</li>
-<li>All your test files and folders should start by <code>test_</code></li>
-<li>Your file organization in the tests folder should be the same as your project: ex: for <code>models/base_model.py</code>, unit tests must be in: <code>tests/test_models/test_base_model.py</code></li>
-<li>All your tests should be executed by using this command: <code>python3 -m unittest discover tests</code></li>
-<li>You can also test file by file by using this command: <code>python3 -m unittest tests/test_models/test_base_model.py</code></li>
-<li>All your modules should have a documentation (<code>python3 -c &#39;print(__import__(&quot;my_module&quot;).__doc__)&#39;</code>)</li>
-<li>All your classes should have a documentation (<code>python3 -c &#39;print(__import__(&quot;my_module&quot;).MyClass.__doc__)&#39;</code>)</li>
-<li>All your functions (inside and outside a class) should have a documentation (<code>python3 -c &#39;print(__import__(&quot;my_module&quot;).my_function.__doc__)&#39;</code> and <code>python3 -c &#39;print(__import__(&quot;my_module&quot;).MyClass.my_function.__doc__)&#39;</code>)</li>
-<li>We strongly encourage you to work together on test cases, so that you don&#39;t miss any edge case</li>
-</ul>
-
-## Execution
+### Execution
 
 <p>Your shell should work like this in interactive mode:</p>
 
@@ -151,46 +81,16 @@ $
 
 <p><img src="https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step0.png" alt="step0"></p>
 
-## Project Breakdown
+### Project Breakdown
 
-### 0. README, AUTHORS
-<li>Write a <code>README.md</code>:
+#### 0. README, AUTHORS
 
-<ul>
-<li>description of the project</li>
-<li>description of the command interpreter:
+#### 1. Be PEP8 compliant!
 
-<ul>
-<li>how to start it</li>
-<li>how to use it</li>
-<li>examples</li>
-</ul></li>
-</ul></li>
-<li>You should have an <code>AUTHORS</code> file at the root of your repository, listing all individuals having contributed content to the repository. Format, see <a href="https://github.com/docker/docker/blob/master/AUTHORS">Docker</a></li>
-</ul>
+#### 2. Unittests
 
-### 1. Be PEP8 compliant! 
-Write a beautiful code that passes the PEP8 checks
+#### 3. BaseModel
 
-### 2. Unittests 
-  <p>All your files, classes, functions must be tested with unit tests</p>
-
-<p>Tips for testing the console: <a href="http://stackoverflow.com/questions/30056986/create-automated-tests-for-interactive-shell-based-on-pythons-cmd-module">Mock test to redirect stdin/stdout</a></p>
-
-<pre><code>guillaume@ubuntu:~/AirBnB$ python3 -m unittest discover tests
-...................................................................................
-...................................................................................
-.......................
-----------------------------------------------------------------------
-Ran 189 tests in 13.135s
-
-OK
-guillaume@ubuntu:~/AirBnB$
-</code></pre>
-
-<p><em>Note that this is just an example, the number of tests you create can be different from the above example</em>.</p>
-
-### 3. BaseModel
 <p>Write a class <code>BaseModel</code> that defines all common attributes/methods for other classes:</p>
 
 <ul>
@@ -227,38 +127,8 @@ guillaume@ubuntu:~/AirBnB$
 </ul></li>
 </ul>
 
-<pre><code>guillaume@ubuntu:~/AirBnB$ cat test_base_model.py
-#!/usr/bin/python3
-from models.base_model import BaseModel
+#### 4. Create BaseModel from dictionary 
 
-my_model = BaseModel()
-my_model.name = &quot;Holberton&quot;
-my_model.my_number = 89
-print(my_model)
-my_model.save()
-print(my_model)
-my_model_json = my_model.to_dict()
-print(my_model_json)
-print(&quot;JSON of my_model:&quot;)
-for key in my_model_json.keys():
-    print(&quot;\t{}: ({}) - {}&quot;.format(key, type(my_model_json[key]), my_model_json[key]))
-
-guillaume@ubuntu:~/AirBnB$ ./test_base_model.py
-[BaseModel] (b6a6e15c-c67d-4312-9a75-9d084935e579) {&#39;my_number&#39;: 89, &#39;name&#39;: &#39;Holberton&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 5, 54, 119434), &#39;id&#39;: &#39;b6a6e15c-c67d-4312-9a75-9d084935e579&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 5, 54, 119427)}
-[BaseModel] (b6a6e15c-c67d-4312-9a75-9d084935e579) {&#39;my_number&#39;: 89, &#39;name&#39;: &#39;Holberton&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 5, 54, 119572), &#39;id&#39;: &#39;b6a6e15c-c67d-4312-9a75-9d084935e579&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 5, 54, 119427)}
-{&#39;my_number&#39;: 89, &#39;name&#39;: &#39;Holberton&#39;, &#39;__class__&#39;: &#39;BaseModel&#39;, &#39;updated_at&#39;: &#39;2017-09-28 21:05:54.119572&#39;, &#39;id&#39;: &#39;b6a6e15c-c67d-4312-9a75-9d084935e579&#39;, &#39;created_at&#39;: &#39;2017-09-28 21:05:54.119427&#39;}
-JSON of my_model:
-    my_number: (&lt;class &#39;int&#39;&gt;) - 89
-    name: (&lt;class &#39;str&#39;&gt;) - Holberton
-    __class__: (&lt;class &#39;str&#39;&gt;) - BaseModel
-    updated_at: (&lt;class &#39;str&#39;&gt;) - 2017-09-28 21:05:54.119572
-    id: (&lt;class &#39;str&#39;&gt;) - b6a6e15c-c67d-4312-9a75-9d084935e579
-    created_at: (&lt;class &#39;str&#39;&gt;) - 2017-09-28 21:05:54.119427
-
-guillaume@ubuntu:~/AirBnB$ 
-</code></pre>
-
-### 4. Create BaseModel from dictionary 
 <p>Previously we create a method to generate a dictionary representation of an instance (method <code>to_dict()</code>).</p>
 
 <p>Now it&#39;s time to re-create an instance with this dictionary representation.</p>
@@ -289,55 +159,8 @@ guillaume@ubuntu:~/AirBnB$
 </ul></li>
 </ul>
 
-<pre><code>guillaume@ubuntu:~/AirBnB$ cat test_base_model_dict.py
-#!/usr/bin/python3
-from models.base_model import BaseModel
+#### 5. Store first object
 
-my_model = BaseModel()
-my_model.name = &quot;Holberton&quot;
-my_model.my_number = 89
-print(my_model.id)
-print(my_model)
-print(type(my_model.created_at))
-print(&quot;--&quot;)
-my_model_json = my_model.to_dict()
-print(my_model_json)
-print(&quot;JSON of my_model:&quot;)
-for key in my_model_json.keys():
-    print(&quot;\t{}: ({}) - {}&quot;.format(key, type(my_model_json[key]), my_model_json[key]))
-
-print(&quot;--&quot;)
-my_new_model = BaseModel(**my_model_json)
-print(my_new_model.id)
-print(my_new_model)
-print(type(my_new_model.created_at))
-
-print(&quot;--&quot;)
-print(my_model is my_new_model)
-
-guillaume@ubuntu:~/AirBnB$ ./test_base_model_dict.py
-56d43177-cc5f-4d6c-a0c1-e167f8c27337
-[BaseModel] (56d43177-cc5f-4d6c-a0c1-e167f8c27337) {&#39;id&#39;: &#39;56d43177-cc5f-4d6c-a0c1-e167f8c27337&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 3, 54, 52298), &#39;my_number&#39;: 89, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 3, 54, 52302), &#39;name&#39;: &#39;Holberton&#39;}
-&lt;class &#39;datetime.datetime&#39;&gt;
---
-{&#39;id&#39;: &#39;56d43177-cc5f-4d6c-a0c1-e167f8c27337&#39;, &#39;created_at&#39;: &#39;2017-09-28 21:03:54.052298&#39;, &#39;__class__&#39;: &#39;BaseModel&#39;, &#39;my_number&#39;: 89, &#39;updated_at&#39;: &#39;2017-09-28 21:03:54.052302&#39;, &#39;name&#39;: &#39;Holberton&#39;}
-JSON of my_model:
-    id: (&lt;class &#39;str&#39;&gt;) - 56d43177-cc5f-4d6c-a0c1-e167f8c27337
-    created_at: (&lt;class &#39;str&#39;&gt;) - 2017-09-28 21:03:54.052298
-    __class__: (&lt;class &#39;str&#39;&gt;) - BaseModel
-    my_number: (&lt;class &#39;int&#39;&gt;) - 89
-    updated_at: (&lt;class &#39;str&#39;&gt;) - 2017-09-28 21:03:54.052302
-    name: (&lt;class &#39;str&#39;&gt;) - Holberton
---
-56d43177-cc5f-4d6c-a0c1-e167f8c27337
-[BaseModel] (56d43177-cc5f-4d6c-a0c1-e167f8c27337) {&#39;id&#39;: &#39;56d43177-cc5f-4d6c-a0c1-e167f8c27337&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 3, 54, 52298), &#39;my_number&#39;: 89, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 3, 54, 52302), &#39;name&#39;: &#39;Holberton&#39;}
-&lt;class &#39;datetime.datetime&#39;&gt;
---
-False
-guillaume@ubuntu:~/AirBnB$ 
-</code></pre>
-
-### 5. Store first object
 <p>Now we can recreate a <code>BaseModel</code> from another one by using a dictionary representation:</p>
 
 <pre><code>&lt;class &#39;BaseModel&#39;&gt; -&gt; to_dict() -&gt; &lt;class &#39;dict&#39;&gt; -&gt; &lt;class &#39;BaseModel&#39;&gt;
@@ -413,54 +236,8 @@ guillaume@ubuntu:~/AirBnB$
 </ul></li>
 </ul>
 
-<pre><code>guillaume@ubuntu:~/AirBnB$ cat test_save_reload_base_model.py
-#!/usr/bin/python3
-from models import storage
-from models.base_model import BaseModel
+#### 6. Console 0.0.1
 
-all_objs = storage.all()
-print(&quot;-- Reloaded objects --&quot;)
-for obj_id in all_objs.keys():
-    obj = all_objs[obj_id]
-    print(obj)
-
-print(&quot;-- Create a new object --&quot;)
-my_model = BaseModel()
-my_model.name = &quot;Holberton&quot;
-my_model.my_number = 89
-my_model.save()
-print(my_model)
-
-guillaume@ubuntu:~/AirBnB$ cat file.json
-cat: file.json: No such file or directory
-guillaume@ubuntu:~/AirBnB$ 
-guillaume@ubuntu:~/AirBnB$ ./test_save_reload_base_model.py
--- Reloaded objects --
--- Create a new object --
-[BaseModel] (ee49c413-023a-4b49-bd28-f2936c95460d) {&#39;my_number&#39;: 89, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 25, 47381), &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 25, 47372), &#39;name&#39;: &#39;Holberton&#39;, &#39;id&#39;: &#39;ee49c413-023a-4b49-bd28-f2936c95460d&#39;}
-guillaume@ubuntu:~/AirBnB$ 
-guillaume@ubuntu:~/AirBnB$ cat file.json ; echo &quot;&quot;
-{&quot;BaseModel.ee49c413-023a-4b49-bd28-f2936c95460d&quot;: {&quot;my_number&quot;: 89, &quot;__class__&quot;: &quot;BaseModel&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:07:25.047381&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:07:25.047372&quot;, &quot;name&quot;: &quot;Holberton&quot;, &quot;id&quot;: &quot;ee49c413-023a-4b49-bd28-f2936c95460d&quot;}}
-guillaume@ubuntu:~/AirBnB$
-guillaume@ubuntu:~/AirBnB$ ./test_save_reload_base_model.py
--- Reloaded objects --
-[BaseModel] (ee49c413-023a-4b49-bd28-f2936c95460d) {&#39;name&#39;: &#39;Holberton&#39;, &#39;id&#39;: &#39;ee49c413-023a-4b49-bd28-f2936c95460d&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 25, 47381), &#39;my_number&#39;: 89, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 25, 47372)}
--- Create a new object --
-[BaseModel] (080cce84-c574-4230-b82a-9acb74ad5e8c) {&#39;name&#39;: &#39;Holberton&#39;, &#39;id&#39;: &#39;080cce84-c574-4230-b82a-9acb74ad5e8c&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 51, 973308), &#39;my_number&#39;: 89, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 51, 973301)}
-guillaume@ubuntu:~/AirBnB$ 
-guillaume@ubuntu:~/AirBnB$ ./test_save_reload_base_model.py
--- Reloaded objects --
-[BaseModel] (080cce84-c574-4230-b82a-9acb74ad5e8c) {&#39;id&#39;: &#39;080cce84-c574-4230-b82a-9acb74ad5e8c&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 51, 973308), &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 51, 973301), &#39;name&#39;: &#39;Holberton&#39;, &#39;my_number&#39;: 89}
-[BaseModel] (ee49c413-023a-4b49-bd28-f2936c95460d) {&#39;id&#39;: &#39;ee49c413-023a-4b49-bd28-f2936c95460d&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 25, 47381), &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 7, 25, 47372), &#39;name&#39;: &#39;Holberton&#39;, &#39;my_number&#39;: 89}
--- Create a new object --
-[BaseModel] (e79e744a-55d4-45a3-b74a-ca5fae74e0e2) {&#39;id&#39;: &#39;e79e744a-55d4-45a3-b74a-ca5fae74e0e2&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 8, 6, 151750), &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 8, 6, 151711), &#39;name&#39;: &#39;Holberton&#39;, &#39;my_number&#39;: 89}
-guillaume@ubuntu:~/AirBnB$ 
-guillaume@ubuntu:~/AirBnB$ cat file.json ; echo &quot;&quot;
-{&quot;BaseModel.e79e744a-55d4-45a3-b74a-ca5fae74e0e2&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;e79e744a-55d4-45a3-b74a-ca5fae74e0e2&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:08:06.151750&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:08:06.151711&quot;, &quot;name&quot;: &quot;Holberton&quot;, &quot;my_number&quot;: 89}, &quot;BaseModel.080cce84-c574-4230-b82a-9acb74ad5e8c&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;080cce84-c574-4230-b82a-9acb74ad5e8c&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:07:51.973308&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:07:51.973301&quot;, &quot;name&quot;: &quot;Holberton&quot;, &quot;my_number&quot;: 89}, &quot;BaseModel.ee49c413-023a-4b49-bd28-f2936c95460d&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;ee49c413-023a-4b49-bd28-f2936c95460d&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:07:25.047381&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:07:25.047372&quot;, &quot;name&quot;: &quot;Holberton&quot;, &quot;my_number&quot;: 89}}
-guillaume@ubuntu:~/AirBnB$ 
-</code></pre>
-
-### 6. Console 0.0.1
 <p>Write a program called <code>console.py</code> that contains the entry point of the command interpreter:</p>
 
 <ul>
@@ -477,26 +254,8 @@ guillaume@ubuntu:~/AirBnB$
 <li>Your code should not be executed when imported</li>
 </ul>
 
-<pre><code>guillaume@ubuntu:~/AirBnB$ ./console.py
-(hbnb) help
+#### 7. Console 0.1 
 
-Documented commands (type help &lt;topic&gt;):
-========================================
-EOF  help  quit
-
-(hbnb) 
-(hbnb) help quit
-Quit command to exit the program
-
-(hbnb) 
-(hbnb) 
-(hbnb) quit 
-guillaume@ubuntu:~/AirBnB$ 
-</code></pre>
-
-<p><strong>No unittests needed</strong></p>
-
-### 7. Console 0.1 
 <p>Update your command interpreter (<code>console.py</code>) to have these commands:</p>
 
 <ul>
@@ -552,33 +311,8 @@ guillaume@ubuntu:~/AirBnB$
 <li>The error management starts from the first argument to the last one<br></li>
 </ul>
 
-<pre><code>guillaume@ubuntu:~/AirBnB$ ./console.py
-(hbnb) all MyModel
-** class doesn&#39;t exist **
-(hbnb) all BaseModel
-[]
-(hbnb) show BaseModel
-** instance id missing **
-(hbnb) show BaseModel Holberton
-** no instance found **
-(hbnb) create BaseModel
-ad0fc007-cd06-47d2-83ed-e388e658a02c
-(hbnb) show BaseModel ad0fc007-cd06-47d2-83ed-e388e658a02c
-[BaseModel] (ad0fc007-cd06-47d2-83ed-e388e658a02c) {&#39;id&#39;: &#39;ad0fc007-cd06-47d2-83ed-e388e658a02c&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 9, 2, 745270), &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 9, 2, 745258)}
-(hbnb) destroy
-** class name missing **
-(hbnb) update BaseModel ad0fc007-cd06-47d2-83ed-e388e658a02c first_name &quot;Betty&quot;
-(hbnb) show BaseModel ad0fc007-cd06-47d2-83ed-e388e658a02c
-[BaseModel] (ad0fc007-cd06-47d2-83ed-e388e658a02c) {&#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 9, 31, 854263), &#39;first_name&#39;: &#39;Betty&#39;, &#39;id&#39;: &#39;ad0fc007-cd06-47d2-83ed-e388e658a02c&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 9, 2, 745258)}
-(hbnb) destroy BaseModel ad0fc007-cd06-47d2-83ed-e388e658a02c
-(hbnb) show BaseModel ad0fc007-cd06-47d2-83ed-e388e658a02c
-** no instance found **
-(hbnb) 
-</code></pre>
+#### 8. First User 
 
-<p><strong>No unittests needed</strong></p>
-
-### 8. First User 
 <p>Write a class <code>User</code> that inherits from <code>BaseModel</code>:</p>
 
 <ul>
@@ -618,41 +352,8 @@ my_user.password = &quot;root&quot;
 my_user.save()
 print(my_user)
 
-guillaume@ubuntu:~/AirBnB$ cat file.json ; echo &quot;&quot;
-{&quot;BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:14.333862&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:14.333852&quot;}, &quot;BaseModel.a42ee380-c959-450e-ad29-c840a898cfce&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;a42ee380-c959-450e-ad29-c840a898cfce&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:15.504296&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:15.504287&quot;}, &quot;BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;af9b4cbd-2ce1-4e6e-8259-f578097dd15f&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:12.971544&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:12.971521&quot;}, &quot;BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:13.753347&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:13.753337&quot;}, &quot;BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4&quot;: {&quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;9bf17966-b092-4996-bd33-26a5353cccb4&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:14.963058&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:14.963049&quot;}}
-guillaume@ubuntu:~/AirBnB$
-guillaume@ubuntu:~/AirBnB$ ./test_save_reload_user.py
--- Reloaded objects --
-[BaseModel] (38a22b25-ae9c-4fa9-9f94-59b3eb51bfba) {&#39;id&#39;: &#39;38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 13, 753337), &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 13, 753347)}
-[BaseModel] (9bf17966-b092-4996-bd33-26a5353cccb4) {&#39;id&#39;: &#39;9bf17966-b092-4996-bd33-26a5353cccb4&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 963049), &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 963058)}
-[BaseModel] (2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4) {&#39;id&#39;: &#39;2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 333852), &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 333862)}
-[BaseModel] (a42ee380-c959-450e-ad29-c840a898cfce) {&#39;id&#39;: &#39;a42ee380-c959-450e-ad29-c840a898cfce&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 15, 504287), &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 15, 504296)}
-[BaseModel] (af9b4cbd-2ce1-4e6e-8259-f578097dd15f) {&#39;id&#39;: &#39;af9b4cbd-2ce1-4e6e-8259-f578097dd15f&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 12, 971521), &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 12, 971544)}
--- Create a new User --
-[User] (38f22813-2753-4d42-b37c-57a17f1e4f88) {&#39;id&#39;: &#39;38f22813-2753-4d42-b37c-57a17f1e4f88&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 42, 848279), &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 42, 848291), &#39;email&#39;: &#39;airbnb@holbertonshool.com&#39;, &#39;first_name&#39;: &#39;Betty&#39;, &#39;last_name&#39;: &#39;Holberton&#39;, &#39;password&#39;: &#39;root&#39;}
-guillaume@ubuntu:~/AirBnB$
-guillaume@ubuntu:~/AirBnB$ cat file.json ; echo &quot;&quot;
-{&quot;BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f&quot;: {&quot;id&quot;: &quot;af9b4cbd-2ce1-4e6e-8259-f578097dd15f&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:12.971544&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:12.971521&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;}, &quot;BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&quot;: {&quot;id&quot;: &quot;38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:13.753347&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:13.753337&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;}, &quot;BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4&quot;: {&quot;id&quot;: &quot;9bf17966-b092-4996-bd33-26a5353cccb4&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:14.963058&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:14.963049&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;}, &quot;BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&quot;: {&quot;id&quot;: &quot;2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:14.333862&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:14.333852&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;}, &quot;BaseModel.a42ee380-c959-450e-ad29-c840a898cfce&quot;: {&quot;id&quot;: &quot;a42ee380-c959-450e-ad29-c840a898cfce&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:15.504296&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:15.504287&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;}, &quot;User.38f22813-2753-4d42-b37c-57a17f1e4f88&quot;: {&quot;id&quot;: &quot;38f22813-2753-4d42-b37c-57a17f1e4f88&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:42.848279&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:42.848291&quot;, &quot;email&quot;: &quot;airbnb@holbertonshool.com&quot;, &quot;first_name&quot;: &quot;Betty&quot;, &quot;__class__&quot;: &quot;User&quot;, &quot;last_name&quot;: &quot;Holberton&quot;, &quot;password&quot;: &quot;root&quot;}}
-guillaume@ubuntu:~/AirBnB$ 
-guillaume@ubuntu:~/AirBnB$ ./test_save_reload_user.py
--- Reloaded objects --
-[BaseModel] (af9b4cbd-2ce1-4e6e-8259-f578097dd15f) {&#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 12, 971544), &#39;id&#39;: &#39;af9b4cbd-2ce1-4e6e-8259-f578097dd15f&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 12, 971521)}
-[BaseModel] (2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4) {&#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 333862), &#39;id&#39;: &#39;2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 333852)}
-[BaseModel] (9bf17966-b092-4996-bd33-26a5353cccb4) {&#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 963058), &#39;id&#39;: &#39;9bf17966-b092-4996-bd33-26a5353cccb4&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 14, 963049)}
-[BaseModel] (a42ee380-c959-450e-ad29-c840a898cfce) {&#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 15, 504296), &#39;id&#39;: &#39;a42ee380-c959-450e-ad29-c840a898cfce&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 15, 504287)}
-[BaseModel] (38a22b25-ae9c-4fa9-9f94-59b3eb51bfba) {&#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 13, 753347), &#39;id&#39;: &#39;38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 13, 753337)}
-[User] (38f22813-2753-4d42-b37c-57a17f1e4f88) {&#39;password&#39;: &#39;63a9f0ea7bb98050796b649e85481845&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 42, 848279), &#39;email&#39;: &#39;airbnb@holbertonshool.com&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 11, 42, 848291), &#39;last_name&#39;: &#39;Holberton&#39;, &#39;id&#39;: &#39;38f22813-2753-4d42-b37c-57a17f1e4f88&#39;, &#39;first_name&#39;: &#39;Betty&#39;}
--- Create a new User --
-[User] (246c227a-d5c1-403d-9bc7-6a47bb9f0f68) {&#39;password&#39;: &#39;root&#39;, &#39;created_at&#39;: datetime.datetime(2017, 9, 28, 21, 12, 19, 611352), &#39;email&#39;: &#39;airbnb@holbertonshool.com&#39;, &#39;updated_at&#39;: datetime.datetime(2017, 9, 28, 21, 12, 19, 611363), &#39;last_name&#39;: &#39;Holberton&#39;, &#39;id&#39;: &#39;246c227a-d5c1-403d-9bc7-6a47bb9f0f68&#39;, &#39;first_name&#39;: &#39;Betty&#39;}
-guillaume@ubuntu:~/AirBnB$
-guillaume@ubuntu:~/AirBnB$ cat file.json ; echo &quot;&quot;
-{&quot;BaseModel.af9b4cbd-2ce1-4e6e-8259-f578097dd15f&quot;: {&quot;updated_at&quot;: &quot;2017-09-28 21:11:12.971544&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;af9b4cbd-2ce1-4e6e-8259-f578097dd15f&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:12.971521&quot;}, &quot;User.38f22813-2753-4d42-b37c-57a17f1e4f88&quot;: {&quot;password&quot;: &quot;63a9f0ea7bb98050796b649e85481845&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:42.848279&quot;, &quot;email&quot;: &quot;airbnb@holbertonshool.com&quot;, &quot;id&quot;: &quot;38f22813-2753-4d42-b37c-57a17f1e4f88&quot;, &quot;last_name&quot;: &quot;Holberton&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:11:42.848291&quot;, &quot;first_name&quot;: &quot;Betty&quot;, &quot;__class__&quot;: &quot;User&quot;}, &quot;BaseModel.9bf17966-b092-4996-bd33-26a5353cccb4&quot;: {&quot;updated_at&quot;: &quot;2017-09-28 21:11:14.963058&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;9bf17966-b092-4996-bd33-26a5353cccb4&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:14.963049&quot;}, &quot;BaseModel.a42ee380-c959-450e-ad29-c840a898cfce&quot;: {&quot;updated_at&quot;: &quot;2017-09-28 21:11:15.504296&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;a42ee380-c959-450e-ad29-c840a898cfce&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:15.504287&quot;}, &quot;BaseModel.38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&quot;: {&quot;updated_at&quot;: &quot;2017-09-28 21:11:13.753347&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;38a22b25-ae9c-4fa9-9f94-59b3eb51bfba&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:13.753337&quot;}, &quot;BaseModel.2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&quot;: {&quot;updated_at&quot;: &quot;2017-09-28 21:11:14.333862&quot;, &quot;__class__&quot;: &quot;BaseModel&quot;, &quot;id&quot;: &quot;2bf3ebfd-a220-49ee-9ae6-b01c75f6f6a4&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:11:14.333852&quot;}, &quot;User.246c227a-d5c1-403d-9bc7-6a47bb9f0f68&quot;: {&quot;password&quot;: &quot;root&quot;, &quot;created_at&quot;: &quot;2017-09-28 21:12:19.611352&quot;, &quot;email&quot;: &quot;airbnb@holbertonshool.com&quot;, &quot;id&quot;: &quot;246c227a-d5c1-403d-9bc7-6a47bb9f0f68&quot;, &quot;last_name&quot;: &quot;Holberton&quot;, &quot;updated_at&quot;: &quot;2017-09-28 21:12:19.611363&quot;, &quot;first_name&quot;: &quot;Betty&quot;, &quot;__class__&quot;: &quot;User&quot;}}
-guillaume@ubuntu:~/AirBnB$ 
-</code></pre>
+#### 9. More classes!
 
-<p><strong>No unittests needed for the console</strong></p>
-
-### 9. More classes!
 <p>Write all those classes that inherit from <code>BaseModel</code>:</p>
 
 <ul>
@@ -716,7 +417,8 @@ guillaume@ubuntu:~/AirBnB$
 </ul></li>
 </ul>
 
-### 10. Console 1.0
+#### 10. Console 1.0
+
 <p>Update <code>FileStorage</code> to manage correctly serialization and deserialization of all our new classes: <code>Place</code>, <code>State</code>, <code>City</code>, <code>Amenity</code> and <code>Review</code></p>
 
 <p>Update your command interpreter (<code>console.py</code>) to allow those actions: <code>show</code>, <code>create</code>, <code>destroy</code>, <code>update</code> and <code>all</code> with all classes created previously.</p>
