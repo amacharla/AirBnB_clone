@@ -19,8 +19,6 @@ class HBNBCommand(cmd.Cmd):
 
 # ==================== setup ====================
 
-    intro = "=====Holberton AirBnB Console 0.0.1=====\n"
-    intro += "======= by, Anoop M. & Tommy W =========\n"
     prompt = "(hbhb) "
     __instances = storage.all()  # used for auto-completion
 
