@@ -1,0 +1,1 @@
+{"User.6c1dd015-668b-4935-a12a-f2eb8814d0bb": {"__class__": "User", "id": "6c1dd015-668b-4935-a12a-f2eb8814d0bb", "first_name": "Betty", "email": "airbnb@holbertonshool.com", "last_name": "Holberton", "password": "root", "created_at": "2017-10-04T03:16:55.474795", "updated_at": "2017-10-04T03:16:55.474819"}}

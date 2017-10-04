@@ -9,11 +9,7 @@ class User(BaseModel):
         """ Init method for `User` class """
 
         usr_attr = ["email", "password", "first_name", "last_name"]
-        attr_dict = {}
-        for key, value in kwargs.items():
-            if key in usr_attr:
-                setattr(self, key, value)
-            else:  # send all other attr to parent classes __init__ method
-                attr_dict[key] = value
+        [setattr(self, key, kwargs.pop(key, ""))
+                for key in usr_attr]
 
-        super().__init__(*args, **attr_dict)
+        super().__init__(*args, **kwargs)
