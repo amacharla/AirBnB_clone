@@ -228,6 +228,11 @@ class HBNBCommand(cmd.Cmd):
         """Helper method"""
         if '.all()' in args:
             self.do_all(cls_name)
+        elif ".count()" in args:
+            instances_key = list(self.__instances.keys())  # list of instances
+            cls_names = list(name.split('.')[0]
+                             for name in instances_key)
+            print(cls_names.count(cls_name))
 
 # ==================== AUTO-COMPLETION  ====================
     def complete_create(self, text, line, begidx, endidx):
