@@ -19,8 +19,7 @@ class BaseModel:
         """
 
         self.id = str(uuid.uuid4())  # random uniq id in str format
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = self.updated_at = datetime.now()
         # update attr with kwargs attr
         [setattr(self, key, value) for key, value in kwargs.items()]
         if "id" not in kwargs:  # know that its a new instance
