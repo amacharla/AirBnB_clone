@@ -23,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
     __instances = storage.all()  # used for auto-completion
 
     def do_quit(self, line):
-        """ Exits the HBNB Console """
+        """Quit command to exit the program"""
         quit()
 
     def do_EOF(self, line):
