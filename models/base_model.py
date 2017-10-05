@@ -35,9 +35,10 @@ class BaseModel:
             if type(value) is not str:  # self. also calls setattr so value obj
                 super().__setattr__(key, value)
             else:
+                vl = '%Y-%m-%dT%H:%M:%S.%f'
                 try:  # if invald value for time, uses current time
                     super().__setattr__(key,
-                        datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                                        datetime.strptime(value, vl))
                 except Exception:  # updates else use default time
                     pass
         else:  # for all other attr

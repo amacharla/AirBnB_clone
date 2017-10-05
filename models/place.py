@@ -25,8 +25,9 @@ class Place(BaseModel):
         place_attr = {"city_id": str, "user_id": str,
                       "name": str, "description": str,
                       "number_bathrooms": int, "number_rooms": int,
-                      "max_guest": int, "price_by_night": int, "latitude": float,
-                      "longitude": float, "amenity_ids": list}
+                      "max_guest": int, "price_by_night": int,
+                      "latitude": float, "longitude": float,
+                      "amenity_ids": list}
 
         # if passed wrong value then correct it
         if key in place_attr and type(value) != place_attr[key]:
