@@ -21,20 +21,27 @@ class BaseModel:
         self.id = str(uuid.uuid4())  # random uniq id in str format
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        for key, value in kwargs.items():  # update attr with kwargs attr
-            if key == "__class__":  # ignore __class__ attr
-                continue
-            try:  # if user passes in invald value for time, uses current time
-                if key == "created_at" or key == "updated_at":  # isoformat
-                    setattr(self,
-                            key,
-                            datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
-                else:
-                    setattr(self, key, value)
-            except Exception:
-                pass
+        # update attr with kwargs attr
+        [setattr(self, key, value) for key, value in kwargs.items()]
         if "id" not in kwargs:  # know that its a new instance
             models.storage.new(self)  # send the new instance to __object dict
+
+    def __setattr__(self, key, value):
+        """ handle value format """
+
+        if key == "__class__":  # ignore __class__ attr
+            return
+        if key == "created_at" or key == "updated_at":  # isoformat
+            if type(value) is not str:  # self. also calls setattr so value obj
+                super().__setattr__(key, value)
+            else:
+                try:  # if invald value for time, uses current time
+                    super().__setattr__(key,
+                        datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                except Exception:  # updates else use default time
+                    pass
+        else:  # for all other attr
+            super().__setattr__(key, value)
 
     def __str__(self):
         """ String rep: [<class name>] (<id>) <__dict__> """

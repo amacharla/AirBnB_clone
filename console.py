@@ -188,7 +188,11 @@ class HBNBCommand(cmd.Cmd):
             else:  # strip the quotes
                 args[3] = args[3].strip('\"')
 
-        setattr(obj, args[2], args[3])  # update instance
+        try:
+            setattr(obj, args[2], args[3])  # update instance
+        except TypeError:
+            print("** Invalid value type for respective key **")
+
         obj.save()  # save updated obj
         return
 
