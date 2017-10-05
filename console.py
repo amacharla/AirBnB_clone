@@ -192,6 +192,39 @@ class HBNBCommand(cmd.Cmd):
         obj.save()  # save updated obj
         return
 
+    def do_BaseModel(self, args):
+        """retrieving instances of class"""
+        self.inst_class('BaseModel', args)
+
+    def do_User(self, args):
+        """retrieving instances of class"""
+        self.inst_class('User', args)
+
+    def do_State(self, args):
+        """retrieving instances of class"""
+        self.inst_class('State', args)
+
+    def do_City(self, args):
+        """retrieving instances of class"""
+        self.inst_class('City', args)
+
+    def do_Amenity(self, args):
+        """retrieving instances of class"""
+        self.inst_class('Amenity', args)
+
+    def do_Place(self, args):
+        """retrieving instances of class"""
+        self.inst_class('Place', args)
+
+    def do_Review(self, args):
+        """retrieving instances of class"""
+        self.inst_class('Review', args)
+
+    def inst_class(self, cls_name, args):
+        """Helper method"""
+        if '.all()' in args:
+            self.do_all(cls_name)
+
 # ==================== AUTO-COMPLETION  ====================
     def complete_create(self, text, line, begidx, endidx):
         """ Auto-complete for `create` """
